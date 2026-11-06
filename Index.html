@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OptiSolver Desktop</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>OptiSolver Desktop</h1>
+        <p>Resuelve problemas de programación lineal y revisa cada pivote paso a paso.</p>
+    </header>
+
+    <main>
+        <form id="formulario-problema">
+            <fieldset>
+                <legend>1. Configura tu problema</legend>
+
+                <label for="objetivo">Tipo de optimización</label>
+                <select id="objetivo" name="objetivo">
+                    <option value="max">Maximizar</option>
+                    <option value="min">Minimizar</option>
+                </select>
+
+                <label for="metodo">Método</label>
+                <select id="metodo" name="metodo">
+                    <option value="primal">Simplex Primal</option>
+                    <option value="dual">Simplex Dual</option>
+                </select>
+
+                <label for="num-variables">Número de variables</label>
+                <input id="num-variables" name="num_variables" type="number"
+                       min="1" step="1" value="2" required>
+
+                <label for="num-restricciones">Número de restricciones</label>
+                <input id="num-restricciones" name="num_restricciones" type="number"
+                       min="1" step="1" value="3" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. Captura los coeficientes</legend>
+
+                <h2>Función objetivo</h2>
+                <div id="coeficientes-objetivo"></div>
+
+                <h2>Restricciones</h2>
+                <div id="matriz-restricciones"></div>
+
+                <p>Las variables de decisión deben ser mayores o iguales a cero.</p>
+            </fieldset>
+
+            <button id="resolver" type="submit" disabled>Resolver problema</button>
+        </form>
+
+        <p id="estado" role="status"></p>
+
+        <section id="resultados" aria-labelledby="titulo-resultados" hidden>
+            <h2 id="titulo-resultados">Resultados e iteraciones</h2>
+            <div id="resumen"></div>
+            <div id="iteraciones"></div>
+        </section>
+    </main>
+</body>
+</html>
